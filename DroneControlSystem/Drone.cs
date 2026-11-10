@@ -6,13 +6,11 @@ namespace DroneControlSystem;
 
 public class Drone
 {
-    // Поля класса
     public string Model { get; set; }
     public int BatteryLevel { get; set; } // заряд от 0 до 100
     public double Altitude { get; set; }  // высота в метрах
     public bool IsEngineOn { get; set; }
 
-    // Конструктор
     public Drone(string model, int batteryLevel)
     {
         Model = model;
@@ -21,7 +19,6 @@ public class Drone
         IsEngineOn = false;
     }
 
-    // Метод для вывода информации о дроне
     public void PrintInfo()
     {
         Console.WriteLine($"Модель: {Model}");
@@ -30,7 +27,6 @@ public class Drone
         Console.WriteLine($"Двигатель: {(IsEngineOn ? "включён" : "выключен")}");
     }
 
-    // Метод для взлёта
     public void TakeOff()
     {
         if (BatteryLevel < 20)
