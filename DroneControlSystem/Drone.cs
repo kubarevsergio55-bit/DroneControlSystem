@@ -7,8 +7,8 @@ namespace DroneControlSystem;
 public class Drone
 {
     public string Model { get; set; }
-    public int BatteryLevel { get; set; } // заряд от 0 до 100
-    public double Altitude { get; set; }  // высота в метрах
+    public int BatteryLevel { get; set; }
+    public double Altitude { get; set; }
     public bool IsEngineOn { get; set; }
 
     public Drone(string model, int batteryLevel)
