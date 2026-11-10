@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DroneControlSystem;
+﻿namespace DroneControlSystem;
 
 public class Drone
 {
     public string Model { get; set; }
-    public int BatteryLevel { get; set; } 
-    public double Altitude { get; set; }  
+    public int BatteryLevel { get; set; }
+    public double Altitude { get; set; }
     public bool IsEngineOn { get; set; }
 
     public Drone(string model, int batteryLevel)
@@ -17,6 +13,10 @@ public class Drone
         BatteryLevel = batteryLevel;
         Altitude = 0;
         IsEngineOn = false;
+    }
+
+    public Drone(string model) : this(model, 100)
+    {
     }
 
     public void PrintInfo()
@@ -50,6 +50,4 @@ public class Drone
         }
         Console.WriteLine($"Заряд после подзарядки: {BatteryLevel}%");
     }
-
 }
-
