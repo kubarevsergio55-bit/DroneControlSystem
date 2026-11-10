@@ -2,14 +2,11 @@
 
 Console.WriteLine("=== Система управления БПЛА (версия 1.0) ===\n");
 
-// Создание объекта дрона
 Drone myDrone = new Drone("DJI Mini 3", 85);
 
-// Вывод информации
 myDrone.PrintInfo();
 Console.WriteLine();
 
-// Демонстрация работы условия и цикла
 Console.Write("Введите команду (1 — взлёт, 0 — выход): ");
 int command = int.Parse(Console.ReadLine());
 
@@ -27,5 +24,17 @@ while (command != 0)
     Console.Write("Введите команду (1 — взлёт, 0 — выход): ");
     command = int.Parse(Console.ReadLine());
 }
-
+while (myDrone.BatteryLevel < 50)
+{
+    Console.Write($"У {myDrone.Model} низкий заряд ({myDrone.BatteryLevel}%). Подзарядить на 30%? (1 — да, 0 — нет): ");
+    int chargeChoice = int.Parse(Console.ReadLine());
+    if (chargeChoice == 1)
+    {
+        myDrone.ChargeBattery(30);
+    }
+    else
+    {
+        break;
+    }
+}
 Console.WriteLine("Программа завершена.");
