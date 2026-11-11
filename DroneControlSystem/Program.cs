@@ -1,6 +1,6 @@
-п»їusing DroneControlSystem;
+using DroneControlSystem;
 
-Console.WriteLine("=== РЎРёСЃС‚РµРјР° СѓРїСЂР°РІР»РµРЅРёСЏ Р‘РџР›Рђ (РІРµСЂСЃРёСЏ 2.1) ===\n");
+Console.WriteLine("Вариант 2");
 
 
 
@@ -16,26 +16,26 @@ foreach (Drone drone in drones)
     drone.PrintInfo();
     if (drone.BatteryLevel < 20)
     {
-        Console.WriteLine($"Р’РќРРњРђРќРР•! РљСЂРёС‚РёС‡РµСЃРєРё РЅРёР·РєРёР№ Р·Р°СЂСЏРґ Сѓ {drone.Model}!");
+        Console.WriteLine("Вариант 2");
     }
-    Console.WriteLine();
+    Console.WriteLine("Вариант 2");
 }
 
 for (int i = 0; i < drones.Length; i++)
 {
     if (drones[i].BatteryLevel < 50)
     {
-        Console.Write($"РЈ {drones[i].Model} Р·Р°СЂСЏРґ {drones[i].BatteryLevel}% (РЅРёР¶Рµ 50%). РџРѕРґР·Р°СЂСЏРґРёС‚СЊ РЅР° 40%? (1 вЂ” РґР°, 0 вЂ” РЅРµС‚): ");
+        Console.Write($"У {drones[i].Model} заряд {drones[i].BatteryLevel}% (ниже 50%). Подзарядить на 40%? (1 — да, 0 — нет): ");
         if (Console.ReadLine() == "1")
         {
             drones[i].ChargeBattery(40);
         }
-        Console.WriteLine();
+        Console.WriteLine("Вариант 2");
     }
 }
 
-Console.WriteLine("--- РќРѕРІС‹Р№ РґСЂРѕРЅ СЃ РїРѕР»РЅС‹Рј Р·Р°СЂСЏРґРѕРј ---");
+Console.WriteLine("Вариант 2");
 Drone fullChargedDrone = new Drone("DJI Mavic 3");
 fullChargedDrone.PrintInfo();
 
-Console.WriteLine("\nРџСЂРѕРіСЂР°РјРјР° Р·Р°РІРµСЂС€РµРЅР°.");
+Console.WriteLine("Вариант 2");
