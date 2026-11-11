@@ -3,6 +3,7 @@
 Console.WriteLine("=== Система управления БПЛА (версия 2.1) ===\n");
 
 
+
 Drone[] drones = new Drone[]
 {
     new Drone("DJI Mini 3", 85),
