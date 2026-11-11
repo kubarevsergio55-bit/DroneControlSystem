@@ -50,4 +50,17 @@ public class Drone
         }
         Console.WriteLine($"Заряд после подзарядки: {BatteryLevel}%");
     }
+
+    private const int BatteryConsumptionPerMinute = 2;
+    public int CalculateFlightTime()
+    {
+        if (!IsEngineOn)
+        {
+            Console.WriteLine("Двигатель выключен. Время полёта не может быть рассчитано.");
+            return 0;
+        }
+        return BatteryLevel / BatteryConsumptionPerMinute;
+    }
+
+
 }

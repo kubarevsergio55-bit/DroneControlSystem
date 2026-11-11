@@ -18,20 +18,43 @@ foreach (Drone drone in drones)
     {
         Console.WriteLine($"ВНИМАНИЕ! Критически низкий заряд у {drone.Model}!");
     }
+
+    drone.TakeOff();
+    if (drone.IsEngineOn)
+    {
+        int flightTime = drone.CalculateFlightTime();
+        Console.WriteLine($"Расчётное время полёта: {flightTime} мин.");
+    }
+
     Console.WriteLine();
 }
 
-for (int i = 0; i < drones.Length; i++)
+try
 {
-    if (drones[i].BatteryLevel < 50)
+    for (int i = 0; i < drones.Length; i++)
     {
-        Console.Write($"У {drones[i].Model} заряд {drones[i].BatteryLevel}% (ниже 50%). Подзарядить на 40%? (1 — да, 0 — нет): ");
-        if (Console.ReadLine() == "1")
+        if (drones[i].BatteryLevel < 50)
         {
-            drones[i].ChargeBattery(40);
+            Console.Write($"У {drones[i].Model} заряд {drones[i].BatteryLevel}% (ниже 50%). Подзарядить на 40%? (1 — да, 0 — нет): ");
+            string input = Console.ReadLine();
+
+            if (!int.TryParse(input, out int choice))
+            {
+                Console.WriteLine("Ошибка: введите число (1 или 0). Подзарядка пропущена.");
+                continue;
+            }
+
+            if (choice == 1)
+            {
+                drones[i].ChargeBattery(40);
+            }
+            Console.WriteLine();
         }
-        Console.WriteLine();
     }
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Произошла ошибка при вводе данных: {ex.Message}");
 }
 
 Console.WriteLine("--- Новый дрон с полным зарядом ---");
