@@ -52,6 +52,7 @@ try
         }
     }
 }
+
 catch (Exception ex)
 {
     Console.WriteLine($"Произошла ошибка при вводе данных: {ex.Message}");
@@ -60,5 +61,10 @@ catch (Exception ex)
 Console.WriteLine("--- Новый дрон с полным зарядом ---");
 Drone fullChargedDrone = new Drone("DJI Mavic 3");
 fullChargedDrone.PrintInfo();
+
+Console.WriteLine("\n--- Запуск полётной миссии ---");
+Mission reconMission = new Mission("Разведка территории", fullChargedDrone, 10.0);
+reconMission.Start();
+
 
 Console.WriteLine("\nПрограмма завершена.");
