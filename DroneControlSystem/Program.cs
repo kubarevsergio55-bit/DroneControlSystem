@@ -1,6 +1,9 @@
 ﻿using DroneControlSystem;
 
-Console.WriteLine("=== Система управления БПЛА ===\n");
+Console.WriteLine("*******************************************");
+Console.WriteLine("*** Система управления БПЛА (версия 1.0) ***");
+Console.WriteLine("*******************************************\n");
+
 
 Drone[] drones = new Drone[]
 {
