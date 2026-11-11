@@ -1,8 +1,8 @@
 using DroneControlSystem;
 
-Console.WriteLine("Вариант 2");
-
-
+Console.WriteLine("*******************************************");
+Console.WriteLine("*** Система управления БПЛА (версия 2.0) ***");
+Console.WriteLine("*******************************************\n");
 
 Drone[] drones = new Drone[]
 {
@@ -16,9 +16,9 @@ foreach (Drone drone in drones)
     drone.PrintInfo();
     if (drone.BatteryLevel < 20)
     {
-        Console.WriteLine("Вариант 2");
+        Console.WriteLine($"ВНИМАНИЕ! Критически низкий заряд у {drone.Model}!");
     }
-    Console.WriteLine("Вариант 2");
+    Console.WriteLine();
 }
 
 for (int i = 0; i < drones.Length; i++)
@@ -30,12 +30,12 @@ for (int i = 0; i < drones.Length; i++)
         {
             drones[i].ChargeBattery(40);
         }
-        Console.WriteLine("Вариант 2");
+        Console.WriteLine();
     }
 }
 
-Console.WriteLine("Вариант 2");
+Console.WriteLine("--- Новый дрон с полным зарядом ---");
 Drone fullChargedDrone = new Drone("DJI Mavic 3");
 fullChargedDrone.PrintInfo();
 
-Console.WriteLine("Вариант 2");
+Console.WriteLine("\nПрограмма завершена.");
