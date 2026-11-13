@@ -1,4 +1,7 @@
+using System.Text.Json;
 using DroneControlSystem;
+
+const string FileName = "drones.json";
 
 Drone[] drones = new Drone[]
 {
@@ -39,6 +42,10 @@ while (true)
         {
             case 1:
                 Console.WriteLine("\n--- Список БПЛА ---");
+                if (drones.Length == 0)
+                {
+                    Console.WriteLine("Список дронов пуст.");
+                }
                 for (int i = 0; i < drones.Length; i++)
                 {
                     Console.WriteLine($"[Дрон №{i + 1}]");
@@ -88,8 +95,12 @@ while (true)
                 break;
 
             case 5:
+                SaveDrones(drones, FileName);
+                break;
+
             case 6:
-                Console.WriteLine("Функция работы с файлами будет добавлена в следующем обновлении.");
+                drones = LoadDrones(FileName);
+                Console.WriteLine($"Загружено дронов: {drones.Length}");
                 break;
 
             default:
@@ -118,4 +129,24 @@ static int SelectDroneIndex(Drone[] drones)
         return -1;
     }
     return number - 1;
+}
+
+static void SaveDrones(Drone[] drones, string fileName)
+{
+    var options = new JsonSerializerOptions { WriteIndented = true };
+    string jsonString = JsonSerializer.Serialize(drones, options);
+    File.WriteAllText(fileName, jsonString);
+    Console.WriteLine($"Состояние сохранено в файл {fileName}");
+}
+
+static Drone[] LoadDrones(string fileName)
+{
+    if (!File.Exists(fileName))
+    {
+        Console.WriteLine("Файл не найден. Будет создан новый массив.");
+        return Array.Empty<Drone>();
+    }
+    string jsonString = File.ReadAllText(fileName);
+    Drone[]? drones = JsonSerializer.Deserialize<Drone[]>(jsonString);
+    return drones ?? Array.Empty<Drone>();
 }

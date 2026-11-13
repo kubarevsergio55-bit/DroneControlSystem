@@ -6,6 +6,8 @@ public class Drone
     public int BatteryLevel { get; set; }
     public double Altitude { get; set; }
     public bool IsEngineOn { get; set; }
+    public Drone() { }
+
 
     public Drone(string model, int batteryLevel)
     {
